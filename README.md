@@ -53,8 +53,9 @@ Output file: data/output_cleaned.csv
 
 ## Current Status
 
-MVP in progress.
-The project can read a CSV file, clean headers and values, detect missing values, detect/remove duplicate rows, and save cleaned data to a new CSV file.
+MVP completed and published.
+
+The project can read a CSV file from a CLI argument, clean headers and values, detect missing values, detect and remove duplicate rows, save cleaned data to a new CSV file, and generate a logging-based cleaning summary.
 
 ## Do Not Commit
 
