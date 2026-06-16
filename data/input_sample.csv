@@ -1,0 +1,6 @@
+Name, Email , Age, City
+ Sasha , test@example.com , 15 , Krakow
+Misha, test@example.com,15,Krakow
+ Anna , anna@example.com,,Warsaw
+ Sasha , test@example.com , 15 , Krakow
+John, john@example.com, 20 , London

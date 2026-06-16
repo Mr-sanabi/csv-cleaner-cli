@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+
+.venv/
+venv/
+
+log.txt
+*.log
+
+data/output_*.csv
