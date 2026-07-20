@@ -1,11 +1,13 @@
 import logging
+from pathlib import Path
 
 def setup_logging():
+    log_path = Path("data/log.txt")
+    log_path.parent.mkdir(parents=True, exist_ok=True)
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s (%(levelname)s) %(message)s",
         handlers=[
-            logging.FileHandler("data\log.txt", encoding="utf-8"),
+            logging.FileHandler(log_path, encoding="utf-8"),
             logging.StreamHandler()
         ])
-    

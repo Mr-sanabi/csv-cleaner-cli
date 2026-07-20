@@ -1,17 +1,21 @@
 import logging
 import argparse
-from storage import read_csv, save_csv
-from cleaner import clean_rows, find_missing_values, find_duplicate_rows, remove_duplicate_rows
-from logger_config import setup_logging
+from src.storage import read_csv, save_csv
+from src.cleaner import clean_rows, find_missing_values, find_duplicate_rows, remove_duplicate_rows
+from src.logger_config import setup_logging
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Normalize, inspect, and deduplicate CSV rows."
+    )
+    parser.add_argument("input_file", help="Path to the source CSV file")
+    parser.add_argument("output_file", help="Path for the cleaned CSV file")
+    return parser.parse_args()
 
 
 def main():
     setup_logging()
-    def parse_args():
-        parser = argparse.ArgumentParser()
-        parser.add_argument("input_file")
-        parser.add_argument("output_file")
-        return parser.parse_args()
     args = parse_args()
     logging.info("CSV Cleaner started")
     try:

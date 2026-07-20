@@ -8,3 +8,9 @@ log.txt
 *.log
 
 data/output_*.csv
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+.DS_Store
+Thumbs.db

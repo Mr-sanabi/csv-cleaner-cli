@@ -10,6 +10,8 @@ def normalize_row_keys(row):
     new_row = {}
     for key, value in row.items():
         clean_key = normalize_column_name(key)
+        if clean_key in new_row:
+            raise ValueError(f"Column name collision after normalization: {clean_key}")
         new_row[clean_key] = value
 
     return new_row
@@ -40,7 +42,7 @@ def find_missing_values(rows):
 
     for row_number, row in enumerate(rows, start=1):
         for column, value in row.items():
-            if value is None or value.strip() == "":
+            if value is None or (isinstance(value, str) and value.strip() == ""):
                 missing_values.append({
                     "row": row_number,
                     "column": column
@@ -53,7 +55,7 @@ def find_duplicate_rows(rows):
     duplicates = []
 
     for row_number, row in enumerate(rows, start=1):
-        row_signature = tuple(row.items())
+        row_signature = tuple(sorted(row.items()))
         if row_signature in seen:
             duplicates.append({
                 "row": row_number
@@ -68,7 +70,7 @@ def remove_duplicate_rows(rows):
     unique_rows = []
 
     for row in rows:
-        row_signature = tuple(row.items())
+        row_signature = tuple(sorted(row.items()))
     
 
         if row_signature not in seen:

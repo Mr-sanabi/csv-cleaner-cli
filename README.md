@@ -1,67 +1,29 @@
 # CSV Cleaner CLI
 
-CSV Cleaner CLI is a small Python command-line tool that reads a messy CSV file, cleans the data, and saves a cleaned version as a new CSV file.
+A reusable Python CLI for normalizing, inspecting, and deduplicating tabular CSV data.
 
 ## Features
 
-* Reads CSV files using Python's standard `csv` module.
-* Normalizes column names.
-* Trims extra spaces from values.
-* Detects missing values.
-* Detects duplicate rows.
-* Removes duplicate rows.
-* Saves cleaned data to a new CSV file.
-* Prints a cleaning summary in the console.
+- trims surrounding whitespace from headers and values;
+- rejects header collisions introduced by normalization;
+- detects missing values without assuming every cell is a string;
+- finds and removes duplicate rows deterministically;
+- tolerates malformed rows and creates output directories;
+- logs a concise cleaning summary.
 
-## Tech Stack
-
-* Python
-* csv
-* argparse
-* logging
-
-## How to Run
-
-This project currently uses only Python standard library modules, so no external dependencies are required.
-
-Run the cleaner:
+## Usage
 
 ```bash
-python src/main.py data/input_sample.csv data/output_cleaned.csv
+python -m src.main data/input.csv data/cleaned.csv
 ```
 
-Arguments:
+## Tests
 
-* `input_file` — path to the source CSV file.
-* `output_file` — path where the cleaned CSV will be saved.
-
-## Example
-
-Input CSV may contain messy headers, extra spaces, missing values, and duplicate rows.
-
-Example output summary:
-
-```text
-Cleaning summary
-Rows loaded: 5
-Rows after cleaning: 5
-Missing values found: 1
-Duplicate rows found: 1
-Rows saved: 4
-Output file: data/output_cleaned.csv
+```bash
+python -m pip install -r requirements-dev.txt
+python -m pytest -q
 ```
 
-## Current Status
+## Stack
 
-MVP completed and published.
-
-The project can read a CSV file from a CLI argument, clean headers and values, detect missing values, detect and remove duplicate rows, save cleaned data to a new CSV file, and generate a logging-based cleaning summary.
-
-## Do Not Commit
-
-Generated output files should not be committed:
-
-```text
-data/output_cleaned.csv
-log.txt
-```
+Python 3.11+, argparse, csv, logging, pytest. Runtime dependencies: none.
