@@ -1,21 +1,15 @@
 # CSV Cleaner CLI
 
-A reusable Python CLI for normalizing, inspecting, and deduplicating tabular CSV data.
+A Python 3.11+ command-line tool that trims CSV headers and values, checks missing values, and removes duplicate rows.
+No runtime dependencies.
 
-## Features
-
-- trims surrounding whitespace from headers and values;
-- rejects header collisions introduced by normalization;
-- detects missing values without assuming every cell is a string;
-- finds and removes duplicate rows deterministically;
-- tolerates malformed rows and creates output directories;
-- logs a concise cleaning summary.
-
-## Usage
+## Run
 
 ```bash
 python -m src.main data/input.csv data/cleaned.csv
 ```
+
+Headers that collide after trimming are rejected. Missing output directories are created automatically. This is basic cleanup, not domain-specific data validation.
 
 ## Tests
 
@@ -23,7 +17,3 @@ python -m src.main data/input.csv data/cleaned.csv
 python -m pip install -r requirements-dev.txt
 python -m pytest -q
 ```
-
-## Stack
-
-Python 3.11+, argparse, csv, logging, pytest. Runtime dependencies: none.
